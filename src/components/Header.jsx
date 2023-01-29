@@ -56,7 +56,7 @@ function Header() {
           ))}
         </Menu>
         <ButtonC>
-          <Button href='#' text='contact us' />
+          <Button href='#contact' text='contact us' />
           <Button href='#' text='join hydra' />
         </ButtonC>
       </Container>
