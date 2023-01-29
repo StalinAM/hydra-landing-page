@@ -6,11 +6,11 @@ export const darck = {
   xLightPurple: '#403A5F',
   darkPurple: '#211E2E',
   // Font size
-  numSize: '4 rem',
-  xxlFont: '2.875 rem',
-  xlFont: '2.25 rem',
-  lFont: '1.5 rem',
-  mFont: '1 rem',
-  sFont: '0.875 rem',
-  xsFont: '0.75 rem'
+  numSize: '4rem',
+  xxlFont: '2.875rem',
+  xlFont: '2.25rem',
+  lFont: '1.5rem',
+  mFont: '1rem',
+  sFont: '0.875rem',
+  xsFont: '0.75rem'
 }
