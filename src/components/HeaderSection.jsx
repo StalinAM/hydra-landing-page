@@ -19,7 +19,7 @@ const Span = styled.span`
 `
 const Arrow = styled.img`
   position: absolute;
-  right: -200px;
+  right: -250px;
   top: -22px;
 `
 const Description = styled.p`
