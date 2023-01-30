@@ -20,7 +20,9 @@ const Description = styled.p`
 `
 const Content = styled.article`
   display: flex;
+  flex-wrap: wrap-reverse;
   justify-content: space-around;
+  gap: 3rem;
 `
 const Left = styled.div`
   display: flex;
@@ -44,6 +46,7 @@ const Contact = styled.ul`
   border-radius: 90px;
   align-items: center;
   justify-content: space-around;
+  gap: 1rem;
 `
 const Item = styled.li`
   display: flex;
