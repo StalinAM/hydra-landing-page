@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     }
     html{
         scroll-behavior: smooth;
+        line-height: 1.5;
     }
     body{
         overflow-x: hidden;
@@ -22,9 +23,13 @@ const GlobalStyles = createGlobalStyle`
     h1,h2,h3,h4,h5,h6{
         margin: 0;
         padding: 0;
+        color: white;
     }
     ul{
         list-style: none;
+    }
+    p{
+        color: white;
     }
     a{
         color: inherit;
