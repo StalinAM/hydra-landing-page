@@ -6,6 +6,7 @@ import email from '../assets/icons/email.svg'
 import arrow from '../assets/arrow.svg'
 import iamgeHome from '../assets/home.webp'
 import styled from 'styled-components'
+import { Container } from '../style/Section'
 
 const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
@@ -33,7 +34,6 @@ const ContainerBtn = styled.div`
   gap: 1rem;
 `
 const Contact = styled.ul`
-  margin-top: 5rem;
   display: flex;
   padding: 2rem;
   background: radial-gradient(
@@ -89,7 +89,7 @@ function Home() {
     }
   ]
   return (
-    <section id='home'>
+    <Container id='home'>
       <Content>
         <Left>
           <Title>Dive Into The Depths of Virtual Reality</Title>
@@ -117,7 +117,7 @@ function Home() {
           </Item>
         ))}
       </Contact>
-    </section>
+    </Container>
   )
 }
 
