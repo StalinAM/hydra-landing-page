@@ -1,5 +1,6 @@
 export const darck = {
   // Colors
+  white: '#FFFFFF',
   lightPurple: '#C0B7E8',
   mLightPurple: '#8176AF',
   xLightPurple: '#403A5F',
