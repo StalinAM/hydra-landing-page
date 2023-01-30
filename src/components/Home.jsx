@@ -4,7 +4,7 @@ import location from '../assets/icons/location.svg'
 import phone from '../assets/icons/phone.svg'
 import email from '../assets/icons/email.svg'
 import arrow from '../assets/arrow.svg'
-import iamgeHome from '../assets/home.svg'
+import iamgeHome from '../assets/home.webp'
 import styled from 'styled-components'
 
 const Image = styled.img`
@@ -35,7 +35,7 @@ const ContainerBtn = styled.div`
 const Contact = styled.ul`
   margin-top: 5rem;
   display: flex;
-  padding: 2rem ;
+  padding: 2rem;
   background: radial-gradient(
     circle,
     rgba(64, 58, 95, 1) 13%,
