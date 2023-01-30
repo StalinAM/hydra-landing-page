@@ -11,7 +11,7 @@ const Btn = styled.a`
   );
   border-radius: 40px;
   font-weight: bold;
-  font-size: ${(props) => props.theme.xsFont};
+  font-size: ${(props) => props.theme.sFont};
   &:hover {
     color: ${(props) => props.theme.white};
     background: none;
