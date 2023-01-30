@@ -7,7 +7,8 @@ import styled from 'styled-components'
 
 const Content = styled.article`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 3rem;
   align-items: center;
 `
 const Image = styled.img`
