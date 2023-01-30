@@ -11,7 +11,7 @@ const Container = styled.nav`
 `
 const Menu = styled.ul`
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
   color: ${(props) => props.theme.white};
 `
 const Item = styled.li`
