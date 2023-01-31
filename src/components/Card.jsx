@@ -33,9 +33,9 @@ const Description = styled.p`
   font-size: ${(props) => props.theme.xsFont};
   font-weight: normal;
 `
-function Card({ key, src, alt, title, paragraph, text, href }) {
+function Card({ src, alt, title, paragraph, text, href }) {
   return (
-    <Container key={key}>
+    <Container>
       <Image src={src} alt={alt} />
       <Title>{title.toUpperCase()}</Title>
       <Line length={title.length} />
