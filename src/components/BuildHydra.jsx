@@ -55,7 +55,7 @@ function BuildHydra() {
     { id: 4, text: 'Hydra VR Deploy' }
   ]
   return (
-    <Container>
+    <Container id='how-to'>
       <HeaderSection
         title='HOW WE BUILD'
         span='WITH HYDRA VR?'
