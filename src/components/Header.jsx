@@ -42,7 +42,7 @@ function Header() {
     { title: 'About', href: '#about' },
     { title: 'Services', href: '#services' },
     { title: 'Technologies', href: '#technologies' },
-    { title: 'How to', href: '#hot-to' }
+    { title: 'How to', href: '#how-to' }
   ]
   return (
     <header>
