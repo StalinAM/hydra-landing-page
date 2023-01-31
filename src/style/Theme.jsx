@@ -15,5 +15,6 @@ export const darck = {
   xsFont: '0.75rem',
 
   // Box Shadow
-  box: '0 0 0 20px rgba(0, 0, 0, 0.25)'
+  box: '0 0 0 20px rgba(0, 0, 0, 0.25)',
+  mBox: '0 0 0 10px rgba(0, 0, 0, 0.25)'
 }
