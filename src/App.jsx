@@ -3,6 +3,7 @@ import About from './components/About'
 import Header from './components/Header'
 import Home from './components/Home'
 import Services from './components/Services'
+import Technologies from './components/Technologies'
 import GlobalStyles from './style/GlobalStyles'
 import { darck } from './style/Theme'
 
@@ -16,6 +17,7 @@ function App() {
           <Home />
           <About />
           <Services />
+          <Technologies />
         </main>
       </ThemeProvider>
     </>
