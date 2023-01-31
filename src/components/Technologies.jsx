@@ -21,7 +21,7 @@ const Title = styled.h2`
   font-weight: bold;
   text-align: center;
 `
-const Span = styled.h2`
+const Span = styled.span`
   font-size: ${(props) => props.theme.xlFont};
   font-weight: 300;
 `
@@ -87,7 +87,7 @@ function Technologies() {
     }
   ]
   return (
-    <Container>
+    <Container id='technologies'>
       <Banner>
         <Title>
           TECHNOLOGIES & HARDWARE
