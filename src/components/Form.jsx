@@ -31,7 +31,8 @@ const TextArea = styled.textarea`
   width: 100%;
   border: 2px solid ${(props) => props.theme.white};
   border-radius: 40px;
-  background: norem 2rem;
+  background: none;
+  padding: 1.5rem 2rem;
   color: ${(props) => props.theme.white};
   font-size: ${(props) => props.theme.sFont};
 `
