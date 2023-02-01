@@ -14,7 +14,7 @@ const Container = styled.footer`
   align-items: center;
   justify-content: center;
   gap: 4rem;
-  padding: 4rem 5rem;
+  padding: 6rem 5rem 4rem;
 `
 const Content = styled.div`
   width: 100%;
