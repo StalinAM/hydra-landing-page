@@ -79,6 +79,9 @@ const Copyright = styled.p`
 `
 const Authors = styled.a`
   color: ${(props) => props.theme.lightPurple};
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 function Footer() {
