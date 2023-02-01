@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Btn = styled.a`
-  color: ${(props) => props.theme.darckPurple};
+  color: ${(props) => props.theme.darkPurple};
   padding: 0.75rem 1.5rem;
   background: linear-gradient(
     90deg,
