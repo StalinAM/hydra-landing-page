@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 import About from './components/About'
 import BuildHydra from './components/BuildHydra'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -21,6 +22,7 @@ function App() {
           <Services />
           <Technologies />
           <BuildHydra />
+          <Contact />
         </main>
         <Footer />
       </ThemeProvider>
