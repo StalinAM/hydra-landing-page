@@ -26,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     input, textarea{
         font-family: 'Montserrat', sans-serif;
     }
+    input:focus, textarea:focus{
+    outline: none;
+    }
     h1,h2,h3,h4,h5,h6{
         margin: 0;
         padding: 0;
