@@ -23,6 +23,9 @@ const GlobalStyles = createGlobalStyle`
         gap: 6rem;
         padding: 0 6rem;
     }
+    input, textarea{
+        font-family: 'Montserrat', sans-serif;
+    }
     h1,h2,h3,h4,h5,h6{
         margin: 0;
         padding: 0;
@@ -40,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
         cursor: pointer;
     }
     button{
+        font-family: 'Montserrat', sans-serif;
         cursor: pointer;
         border: none;
         outline: none;
