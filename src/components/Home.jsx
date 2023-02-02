@@ -96,7 +96,7 @@ function Home() {
       alt: 'email symbol'
     }
   ]
-  const image3D = document.getElementById('image')
+  const image3D = document.getElementById('image-home')
   // const wrapper = document.getElementById('wrapper')
   const [halfWidth, setHalfWidth] = useState(0)
   const [halfHeight, setHalfHeight] = useState(0)
@@ -144,7 +144,7 @@ function Home() {
           onMouseLeave={() => restoreTransform()}
         >
           <Image
-            id='image'
+            id='image-home'
             src={imageHome}
             alt='girl using virtual reality glasses'
           />
