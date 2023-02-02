@@ -20,12 +20,16 @@ const Separator = styled.div`
 `
 const Input = styled.input`
   width: 100%;
-  border: 2px solid ${(props) => props.theme.white};
+
   border-radius: 40px;
+  border: 2px solid ${(props) => props.theme.white};
   background: none;
   padding: 1rem 2rem;
   color: ${(props) => props.theme.white};
   font-size: ${(props) => props.theme.sFont};
+  &::placeholder {
+    color: ${(props) => props.theme.lightPurple};
+  }
 `
 const TextArea = styled.textarea`
   width: 100%;
@@ -35,6 +39,9 @@ const TextArea = styled.textarea`
   padding: 1.5rem 2rem;
   color: ${(props) => props.theme.white};
   font-size: ${(props) => props.theme.sFont};
+  &::placeholder {
+    color: ${(props) => props.theme.lightPurple};
+  }
 `
 const Btn = styled.button`
   color: ${(props) => props.theme.darkPurple};
