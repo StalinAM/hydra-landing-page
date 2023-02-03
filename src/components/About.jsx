@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
 import HeaderSection from './HeaderSection'
 import image from '../assets/about.webp'
 import { Container } from '../style/Section'
 import styled from 'styled-components'
+import Wrapper from './Wrapper'
+import { coordTransform, restoreTransform } from './Item3D'
 
 const Content = styled.article`
   display: flex;
@@ -14,7 +16,8 @@ const Content = styled.article`
 const Image = styled.img`
   box-shadow: ${(props) => props.theme.box};
   border-radius: 100px 240px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  /* transform: matrix(-1, 0, 0, 1, 0, 0); */
+  transform-style: preserve-3d;
 `
 const Right = styled.div`
   display: flex;
@@ -36,6 +39,8 @@ const Description = styled.p`
   max-width: 75ch;
 `
 function About() {
+  const [coordTransformS, setCoordTransformS] = useState()
+
   return (
     <Container id='about'>
       <HeaderSection
@@ -44,7 +49,17 @@ function About() {
         paragraph='Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Viverra aliquet eget sit amet tellus. Ornare lectus sit amet est placerat in. Lectus magna fringilla urna porttitor rhoncus vitae.'
       />
       <Content>
-        <Image src={image} alt='boy using virtual reality glasses' />
+        <Wrapper
+          coordTransform={coordTransform}
+          restoreTransform={restoreTransform}
+          setCoordTransformS={setCoordTransformS}
+        >
+          <Image
+            style={coordTransformS}
+            src={image}
+            alt='boy using virtual reality glasses'
+          />
+        </Wrapper>
         <Right>
           <SubTitle>
             ABOUT <Span>HYDRA VR</Span>
