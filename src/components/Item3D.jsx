@@ -1,15 +1,33 @@
-const coordTransform = (event, setCoordTransformS, halfWidth, halfHeight) => {
+const coordTransform = (
+  event,
+  setCoordTransformS,
+  halfWidth,
+  halfHeight,
+  setTranslateDiv,
+  times
+) => {
   const { offsetX, offsetY } = event.nativeEvent
-  const rotationY = ((offsetX - halfWidth) / halfWidth) * 14
-  const rotationX = ((offsetY + halfHeight) / halfHeight) * 14
+  const rotationY = ((offsetX - halfWidth) / halfWidth) * 10
+  const rotationX = ((offsetY + halfHeight) / halfHeight) * 10
   setCoordTransformS({
-    transform: `translate3d(0, 0, 120px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
-    transitionTimingFunction: 'ease-out'
+    transitionDuration: `${times}ms`,
+    transform: `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
+    transitionTimingFuntion: 'ease-out'
+  })
+  setTranslateDiv({
+    transitionDuration: '300ms',
+    transform: 'translate3d(0, 0, 120px)',
+    transitionTimingFuntion: 'ease-out'
   })
 }
-const restoreTransform = (setCoordTransformS) => {
+const restoreTransform = (setCoordTransformS, setTranslateDiv) => {
   setCoordTransformS({
-    transform: 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)'
+    transitionDuration: '300ms',
+    transform: 'rotateX(0deg) rotateY(0deg)'
+  })
+  setTranslateDiv({
+    transform: 'translate3d(0, 0, 0px)',
+    transitionDuration: '300ms'
   })
 }
 export { coordTransform, restoreTransform }

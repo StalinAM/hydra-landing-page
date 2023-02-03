@@ -14,7 +14,6 @@ const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
   box-shadow: ${(props) => props.theme.box};
   transform-style: preserve-3d;
-  transition-duration: 300ms;
 `
 const Title = styled.h1`
   font-size: ${(props) => props.theme.xxlFont};
@@ -71,6 +70,7 @@ const SpanT = styled.span`
   font-weight: normal;
   font-size: ${(props) => props.theme.sFont};
 `
+
 function Home() {
   const footerHome = [
     {

@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import useScreenSize from './ScreenSize'
 
 const Container = styled.div`
-  perspective: 1200px;
+  perspective: 1100px;
+`
+const WrapperT = styled.div`
+  transform-style: preserve-3d;
 `
 function Wrapper({
   children,
@@ -12,10 +15,12 @@ function Wrapper({
   setCoordTransformS
 }) {
   const { width, height } = useScreenSize()
-  const elementRef = useRef()
+  const [translateDiv, setTranslateDiv] = useState()
 
+  const elementRef = useRef()
   const [halfWidth, setHalfWidth] = useState(0)
   const [halfHeight, setHalfHeight] = useState(0)
+  const [times, setTimes] = useState(300)
   const sizeItem = () => {
     const { width, height } = elementRef.current.getBoundingClientRect()
     setHalfWidth(width / 2)
@@ -24,13 +29,35 @@ function Wrapper({
   useEffect(() => {
     sizeItem()
   }, [width, height])
+  const timeTransition = () => {
+    setTimeout(() => {
+      setTimes(0)
+    }, 300)
+  }
+  const restoreTimes = () => setTimes(300)
   return (
     <Container
       ref={elementRef}
-      onMouseMove={(event) => coordTransform(event, setCoordTransformS, halfWidth, halfHeight)}
-      onMouseLeave={() => restoreTransform(setCoordTransformS)}
+      onMouseMove={(event) =>
+        coordTransform(
+          event,
+          setCoordTransformS,
+          halfWidth,
+          halfHeight,
+          setTranslateDiv,
+          times
+        )
+      }
+      onMouseLeave={() => restoreTransform(setCoordTransformS, setTranslateDiv)}
+      onMouseOut={() => {
+        restoreTimes()
+      }}
+      onMouseOver={() => {
+        sizeItem()
+        timeTransition()
+      }}
     >
-      {children}
+      <WrapperT style={translateDiv}>{children}</WrapperT>
     </Container>
   )
 }
