@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import Button from './Button'
-
+import Wrapper from './Wrapper'
+import { coordTransform, restoreTransform } from './Item3D'
+import { useState } from 'react'
 const Container = styled.li`
+  transform-style: preserve-3d;
   width: 330px;
   display: flex;
   flex-direction: column;
@@ -34,14 +37,21 @@ const Description = styled.p`
   font-weight: normal;
 `
 function Card({ src, alt, title, paragraph, text, href }) {
+  const [coordTransformS, setCoordTransformS] = useState()
   return (
-    <Container>
-      <Image src={src} alt={alt} />
-      <Title>{title.toUpperCase()}</Title>
-      <Line length={title.length} />
-      <Description>{paragraph}</Description>
-      <Button text={text} href={href} />
-    </Container>
+    <Wrapper
+      coordTransform={coordTransform}
+      restoreTransform={restoreTransform}
+      setCoordTransformS={setCoordTransformS}
+    >
+      <Container style={coordTransformS}>
+        <Image src={src} alt={alt} />
+        <Title>{title.toUpperCase()}</Title>
+        <Line length={title.length} />
+        <Description>{paragraph}</Description>
+        <Button text={text} href={href} />
+      </Container>
+    </Wrapper>
   )
 }
 
