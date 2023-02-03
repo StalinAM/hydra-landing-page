@@ -1,4 +1,3 @@
-import React, { useRef, useEffect, useState } from 'react'
 import Button from './Button'
 import location from '../assets/icons/location.svg'
 import phone from '../assets/icons/phone.svg'
@@ -7,7 +6,9 @@ import arrow from '../assets/arrow.svg'
 import imageHome from '../assets/home.webp'
 import styled from 'styled-components'
 import { Container } from '../style/Section'
-import useScreenSize from './ScreenSize'
+import Wrapper from './Wrapper'
+import { coordTransform, restoreTransform } from './Item3D'
+import { useState } from 'react'
 
 const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
@@ -69,9 +70,6 @@ const SpanT = styled.span`
   font-weight: normal;
   font-size: ${(props) => props.theme.sFont};
 `
-const Wrapper = styled.div`
-  perspective: 1200px;
-`
 function Home() {
   const footerHome = [
     {
@@ -96,32 +94,8 @@ function Home() {
       alt: 'email symbol'
     }
   ]
-  const image3D = document.getElementById('image-home')
-  // const wrapper = document.getElementById('wrapper')
-  const [halfWidth, setHalfWidth] = useState(0)
-  const [halfHeight, setHalfHeight] = useState(0)
-  const contactRef = useRef()
-  const { width, height } = useScreenSize()
-  const sizeItem = () => {
-    const { width, height } = contactRef.current.getBoundingClientRect()
-    setHalfWidth(width / 2)
-    setHalfHeight(-height / 2)
-  }
-  useEffect(() => {
-    sizeItem()
-  }, [width, height, image3D])
+  const [coordTransformS, setCoordTransformS] = useState()
 
-  const coordTransform = (event) => {
-    const { offsetX, offsetY } = event.nativeEvent
-    const rotationY = ((offsetX - halfWidth) / halfWidth) * 14
-    const rotationX = ((offsetY + halfHeight) / halfHeight) * 14
-    image3D.style.transitionDuration = '300ms'
-    image3D.style.transform = `translate3d(0, 0, 120px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`
-    image3D.style.transitionTimingFunction = 'ease-out'
-  }
-  const restoreTransform = () => {
-    image3D.style.transform = 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)'
-  }
   return (
     <Container id='home'>
       <Content>
@@ -138,13 +112,12 @@ function Home() {
           </ContainerBtn>
         </Left>
         <Wrapper
-          id='wrapper'
-          ref={contactRef}
-          onMouseMove={(event) => coordTransform(event)}
-          onMouseLeave={() => restoreTransform()}
+          coordTransform={coordTransform}
+          restoreTransform={restoreTransform}
+          setCoordTransformS={setCoordTransformS}
         >
           <Image
-            id='image-home'
+            style={coordTransformS}
             src={imageHome}
             alt='girl using virtual reality glasses'
           />
