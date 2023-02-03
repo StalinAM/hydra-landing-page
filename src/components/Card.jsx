@@ -5,6 +5,7 @@ import { coordTransform, restoreTransform } from './Item3D'
 import { useState } from 'react'
 const Container = styled.li`
   transform-style: preserve-3d;
+  transition-duration: 300ms;
   width: 330px;
   display: flex;
   flex-direction: column;

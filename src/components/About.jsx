@@ -18,6 +18,7 @@ const Image = styled.img`
   border-radius: 100px 240px;
   /* transform: matrix(-1, 0, 0, 1, 0, 0); */
   transform-style: preserve-3d;
+  transition-duration: 300ms;
 `
 const Right = styled.div`
   display: flex;
