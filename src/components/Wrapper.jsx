@@ -20,11 +20,16 @@ function Wrapper({
   const elementRef = useRef()
   const [halfWidth, setHalfWidth] = useState(0)
   const [halfHeight, setHalfHeight] = useState(0)
+  const [top, setTop] = useState(0)
+  const [left, setLeft] = useState()
   const [times, setTimes] = useState(300)
   const sizeItem = () => {
-    const { width, height } = elementRef.current.getBoundingClientRect()
+    const { width, height, left, top } =
+      elementRef.current.getBoundingClientRect()
     setHalfWidth(width / 2)
     setHalfHeight(-height / 2)
+    setTop(top)
+    setLeft(left)
   }
   useEffect(() => {
     sizeItem()
@@ -44,6 +49,8 @@ function Wrapper({
           setCoordTransformS,
           halfWidth,
           halfHeight,
+          left,
+          top,
           setTranslateDiv,
           times
         )

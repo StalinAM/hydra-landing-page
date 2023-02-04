@@ -3,12 +3,14 @@ const coordTransform = (
   setCoordTransformS,
   halfWidth,
   halfHeight,
+  left,
+  top,
   setTranslateDiv,
   times
 ) => {
-  const { offsetX, offsetY } = event.nativeEvent
-  const rotationY = ((offsetX - halfWidth) / halfWidth) * 10
-  const rotationX = ((offsetY + halfHeight) / halfHeight) * 10
+  const { clientX, clientY } = event.nativeEvent
+  const rotationY = ((clientX - left - halfWidth) / halfWidth) * 10
+  const rotationX = ((clientY - top + halfHeight) / halfHeight) * 10
   setCoordTransformS({
     transitionDuration: `${times}ms`,
     transform: `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
