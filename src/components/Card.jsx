@@ -21,6 +21,7 @@ const Container = styled.li`
 const Image = styled.img`
   border-radius: 50%;
   box-shadow: ${(props) => props.theme.box};
+  transform: translateZ(60px);
 `
 const Title = styled.h3`
   font-size: ${(props) => props.theme.lFont};
