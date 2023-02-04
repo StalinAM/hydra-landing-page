@@ -22,6 +22,7 @@ const Image = styled.img`
   border-radius: 50%;
   box-shadow: ${(props) => props.theme.box};
   transform: translateZ(60px);
+  transition: all 0.3s ease-out;
 `
 const Title = styled.h3`
   font-size: ${(props) => props.theme.lFont};
