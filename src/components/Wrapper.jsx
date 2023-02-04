@@ -55,11 +55,11 @@ function Wrapper({
           times
         )
       }
-      onMouseLeave={() => restoreTransform(setCoordTransformS, setTranslateDiv)}
-      onMouseOut={() => {
+      onMouseLeave={() => {
+        restoreTransform(setCoordTransformS, setTranslateDiv)
         restoreTimes()
       }}
-      onMouseOver={() => {
+      onMouseEnter={() => {
         sizeItem()
         timeTransition()
       }}
