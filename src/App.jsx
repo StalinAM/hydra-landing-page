@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import About from './components/About'
 import BuildHydra from './components/BuildHydra'
@@ -11,11 +12,12 @@ import GlobalStyles from './style/GlobalStyles'
 import { darck } from './style/Theme'
 
 function App() {
+  const [toggle, setToggle] = useState(false)
   return (
     <>
       <GlobalStyles />
       <ThemeProvider theme={darck}>
-        <Header />
+        <Header toggle={toggle} setToggle={setToggle} />
         <main>
           <Home />
           <About />
