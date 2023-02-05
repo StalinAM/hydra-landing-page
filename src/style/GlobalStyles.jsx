@@ -22,6 +22,15 @@ const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         gap: 6rem;
         padding: 0 6rem;
+        @media screen and (max-width: 1280px) {
+            padding: 0 3rem;
+        }
+        @media screen and (max-width: 1080px) {
+            padding: 0 1.5rem;
+        }
+        @media screen and (max-width: 768px) {
+            padding: 0 0.7rem;
+        }
     }
     input, textarea{
         font-family: 'Montserrat', sans-serif;
