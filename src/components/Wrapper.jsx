@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import useScreenSize from './ScreenSize'
+import useScreenSize from './hooks/ScreenSize'
 
 const Container = styled.div`
   perspective: 1100px;
