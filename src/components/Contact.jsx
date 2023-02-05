@@ -14,6 +14,13 @@ const Container = styled.section`
   );
   padding: 3rem 5rem;
   border-radius: 100px;
+  @media screen and (max-width: 768px) {
+    border-radius: 40px;
+    padding: 2rem 2.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 1rem;
+  }
 `
 const Title = styled.h2`
   font-size: ${(props) => props.theme.xlFont};

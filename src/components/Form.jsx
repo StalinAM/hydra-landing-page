@@ -11,12 +11,16 @@ const Container = styled.form`
 const Title = styled.h3`
   font-size: ${(props) => props.theme.xlFont};
   font-weight: 300;
+  text-align: center;
 `
 const Separator = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 const Input = styled.input`
   width: 100%;

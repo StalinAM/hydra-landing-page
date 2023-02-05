@@ -15,16 +15,29 @@ const Container = styled.footer`
   justify-content: center;
   gap: 4rem;
   padding: 6rem 5rem 4rem;
+  @media screen and (max-width: 1080px) {
+    padding: 3rem 1.5rem 4rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem 1rem 3rem;
+  }
 `
 const Content = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 const Vertical = styled.div`
   border-left: 1px solid ${(props) => props.theme.lightPurple};
   height: 144px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 const List = styled.ul`
   display: flex;
@@ -34,6 +47,9 @@ const List = styled.ul`
   color: ${(props) => props.theme.white};
   font-size: ${(props) => props.theme.mFont};
   font-weight: bold;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 const Item = styled.li`
   cursor: pointer;
@@ -58,6 +74,10 @@ const Socialize = styled.section`
   flex-direction: column;
   gap: 1rem;
   align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 const ListRRSS = styled.ul`
   display: flex;
