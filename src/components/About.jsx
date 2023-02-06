@@ -25,12 +25,18 @@ const Right = styled.div`
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
 `
 const SubTitle = styled.h3`
   display: flex;
   flex-direction: column;
   font-size: ${(props) => props.theme.xlFont};
   font-weight: bold;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 const Span = styled.span`
   font-weight: 300;
