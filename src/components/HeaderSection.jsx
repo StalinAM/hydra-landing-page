@@ -32,12 +32,6 @@ const Arrow = styled.img`
     display: none;
   }
 `
-const Description = styled.p`
-  max-width: 75ch;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`
 function HeaderSection({ title, span, paragraph }) {
   return (
     <Container>
@@ -48,7 +42,6 @@ function HeaderSection({ title, span, paragraph }) {
           <Arrow src={arrow} />
         </Span>
       </Title>
-      <Description>{paragraph}</Description>
     </Container>
   )
 }
