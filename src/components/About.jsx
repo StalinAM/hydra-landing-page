@@ -12,6 +12,7 @@ const Content = styled.article`
   justify-content: space-around;
   gap: 3rem;
   align-items: center;
+  flex-wrap: wrap;
 `
 const Image = styled.img`
   box-shadow: ${(props) => props.theme.box};
@@ -36,7 +37,7 @@ const Span = styled.span`
   position: relative;
 `
 const Description = styled.p`
-  max-width: 75ch;
+  max-width: 65ch;
 `
 function About() {
   const [coordTransformS, setCoordTransformS] = useState()
