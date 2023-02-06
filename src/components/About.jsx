@@ -17,8 +17,11 @@ const Content = styled.article`
 const Image = styled.img`
   box-shadow: ${(props) => props.theme.box};
   border-radius: 100px 240px;
-  /* transform: matrix(-1, 0, 0, 1, 0, 0); */
   transform-style: preserve-3d;
+  @media screen and (max-width: 480px) {
+    box-shadow: ${(props) => props.theme.mBox};
+    border-radius: 50px 120px;
+  }
 `
 const Right = styled.div`
   display: flex;

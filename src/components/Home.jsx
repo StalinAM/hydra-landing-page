@@ -9,11 +9,15 @@ import { Container } from '../style/Section'
 import Wrapper from './Wrapper'
 import { coordTransform, restoreTransform } from './Item3D'
 import { useState } from 'react'
+import { Slideshow, Slide } from './SlideShow'
 
 const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
   box-shadow: ${(props) => props.theme.box};
   transform-style: preserve-3d;
+  @media screen and (max-width: 480px) {
+    box-shadow: ${(props) => props.theme.mBox};
+  }
 `
 const Title = styled.h1`
   font-size: ${(props) => props.theme.xxlFont};
@@ -38,7 +42,7 @@ const ContainerBtn = styled.div`
   align-items: center;
   gap: 1rem;
 `
-const Contact = styled.ul`
+const Contact = styled.div`
   display: flex;
   padding: 2rem;
   background: radial-gradient(
@@ -50,15 +54,26 @@ const Contact = styled.ul`
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
+  position: relative;
+  @media screen and (max-width: 1080px) {
+    width: min-content;
+    margin: 0 auto;
+  }
 `
-const Item = styled.li`
+const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 1.8rem;
+  @media screen and (max-width: 1080px) {
+    justify-content: center;
+  }
 `
 const Line = styled.div`
   border-left: 1px solid ${(props) => props.theme.lightPurple};
   height: 57px;
+  @media screen and (max-width: 1080px) {
+    display: none;
+  }
 `
 const TitleF = styled.p`
   display: flex;
@@ -125,16 +140,20 @@ function Home() {
         </Wrapper>
       </Content>
       <Contact>
-        {footerHome.map((item) => (
-          <Item key={item.id}>
-            {item.id !== 1 && <Line />}
-            <img src={item.icon} alt={item.alt} />
-            <TitleF>
-              {item.title}
-              <SpanT>{item.span}</SpanT>
-            </TitleF>
-          </Item>
-        ))}
+        <Slideshow>
+          {footerHome.map((item) => (
+            <Slide key={item.id}>
+              <Item>
+                {item.id !== 1 && <Line />}
+                <img src={item.icon} alt={item.alt} />
+                <TitleF>
+                  {item.title}
+                  <SpanT>{item.span}</SpanT>
+                </TitleF>
+              </Item>
+            </Slide>
+          ))}
+        </Slideshow>
       </Contact>
     </Container>
   )
