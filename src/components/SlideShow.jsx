@@ -1,51 +1,13 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useCallback } from 'react'
 import arrow from '../assets/small-arrow.svg'
 import styled from 'styled-components'
 
-const Slideshow = ({
-  children,
-  controles = false,
-  autoplay = false,
-  velocidad = '500',
-  intervalo = '5000'
-}) => {
+const Slideshow = ({ children, controles = true }) => {
   const slideshow = useRef(null)
-  const intervaloSlideshow = useRef(null)
 
-  const siguiente = useCallback(() => {
-    // Comprobamos que el slideshow tenga elementos
-    if (slideshow.current.children.length > 0) {
-      console.log('Siguiente')
-
-      // Obtenemos el primer elemento del slideshow.
-      const primerElemento = slideshow.current.children[0]
-
-      // Establecemos la transicion para el slideshow.
-      slideshow.current.style.transition = `${velocidad}ms ease-out all`
-
-      const tamañoSlide = slideshow.current.children[0].offsetWidth
-
-      // Movemos el slideshow
-      slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
-
-      const transicion = () => {
-        // Reiniciamos la posicion del Slideshow.
-        slideshow.current.style.transition = 'none'
-        slideshow.current.style.transform = 'translateX(0)'
-
-        // Tomamos el primer elemento y lo mandamos al final.
-        slideshow.current.appendChild(primerElemento)
-
-        slideshow.current.removeEventListener('transitionend', transicion)
-      }
-
-      // Eventlistener para cuando termina la animacion.
-      slideshow.current.addEventListener('transitionend', transicion)
-    }
-  }, [velocidad])
+  const siguiente = useCallback()
 
   const anterior = () => {
-    console.log('Anterior')
     if (slideshow.current.children.length > 0) {
       // Obtenemos el ultimo elemento del slideshow.
       const index = slideshow.current.children.length - 1
@@ -54,40 +16,11 @@ const Slideshow = ({
         ultimoElemento,
         slideshow.current.firstChild
       )
-
-      slideshow.current.style.transition = 'none'
-      const tamañoSlide = slideshow.current.children[0].offsetWidth
-      slideshow.current.style.transform = `translateX(-${tamañoSlide}px)`
-
-      setTimeout(() => {
-        slideshow.current.style.transition = `${velocidad}ms ease-out all`
-        slideshow.current.style.transform = 'translateX(0)'
-      }, 30)
     }
   }
 
-  useEffect(() => {
-    if (autoplay) {
-      intervaloSlideshow.current = setInterval(() => {
-        siguiente()
-      }, intervalo)
-
-      // Eliminamos los intervalos
-      slideshow.current.addEventListener('mouseenter', () => {
-        clearInterval(intervaloSlideshow.current)
-      })
-
-      // Volvemos a poner el intervalo cuando saquen el cursor del slideshow
-      slideshow.current.addEventListener('mouseleave', () => {
-        intervaloSlideshow.current = setInterval(() => {
-          siguiente()
-        }, intervalo)
-      })
-    }
-  }, [autoplay, intervalo, siguiente])
-
   return (
-    <ContenedorPrincipal>
+    <>
       <ContenedorSlideshow ref={slideshow}>{children}</ContenedorSlideshow>
       {controles && (
         <Controles>
@@ -99,66 +32,57 @@ const Slideshow = ({
           </Boton>
         </Controles>
       )}
-    </ContenedorPrincipal>
+    </>
   )
 }
 
-const ContenedorPrincipal = styled.div`
+const ContenedorSlideshow = styled.ul`
   position: relative;
-`
-
-const ContenedorSlideshow = styled.div`
   display: flex;
   flex-wrap: nowrap;
+  overflow: hidden;
 `
 
-const Slide = styled.div`
+const Slide = styled.li`
   min-width: 100%;
-  overflow: hidden;
-  transition: 0.3s ease all;
   z-index: 10;
   /* max-height: 500px; */
   position: relative;
-
-  img {
-    width: 100%;
-    vertical-align: top;
-  }
 `
 const Controles = styled.div`
   position: absolute;
-  top: 0;
   z-index: 20;
   width: 100%;
-  height: 100%;
+
   pointer-events: none;
+  top: 50%;
+  transform: translateY(-15px);
 `
 const ArrowLeft = styled.img`
   width: 25px;
 `
 const ArrowRight = styled.img`
   width: 25px;
+  right: 0;
   transform: rotate(180deg);
 `
 const Boton = styled.button`
+  position: absolute;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 35px);
   box-shadow: ${(props) => props.theme.mBox};
   background: linear-gradient(
     90deg,
     ${(props) => props.theme.mLightPurple},
     ${(props) => props.theme.lightPurple}
   );
-  transition: 0.3s ease all
-    ${(props) => (props.derecho ? 'right: 0' : 'left: 0')};
+  ${(props) => (props.derecho ? 'left: -15px' : 'right: -15px')};
+  pointer-events: all;
 `
 
 export { Slideshow, Slide }
