@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Slideshow = ({ children, controles = true }) => {
   const slideshow = useRef(null)
 
-  const siguiente = useCallback()
+  const siguiente = useCallback(() => {})
 
   const anterior = () => {
     if (slideshow.current.children.length > 0) {
