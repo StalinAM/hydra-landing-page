@@ -1,7 +1,7 @@
 import React from 'react'
 import useScreenSize from './hooks/ScreenSize'
 import { Container } from '../style/Section'
-import { Slideshow, Slide } from './SlideShow'
+import { Slideshow } from './SlideShow'
 import unreal from '../assets/unreal.svg'
 import unity from '../assets/unity.svg'
 import oculus from '../assets/oculus.svg'
@@ -78,20 +78,41 @@ const Arrow = styled.img`
   transform: rotate(90deg);
 `
 const List = styled.ul`
-  width: 100%;
   display: flex;
+  gap: 1rem;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  position: relative;
 `
 const Item = styled.li`
-  transition: all ease-in-out 0.4s;
-  &:hover {
-    transform: scale(1.2);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 1080px) {
+    transition: all ease-in-out 0.4s;
+    &:hover {
+      transform: scale(1.2);
+    }
+    min-width: 100%;
+    z-index: 10;
+    position: relative;
   }
 `
-const Carrousel = styled.div`
-  position: relative;
+const ContainerList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 1080px) {
+    position: relative;
+    width: auto;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 768px) {
+    width: auto;
+    margin: 0;
+  }
 `
 function Technologies() {
   const { width } = useScreenSize()
@@ -133,29 +154,29 @@ function Technologies() {
           <Arrow src={arrow} alt='' />
         </Btn>
       </Banner>
-      {width < 1081 ? (
-        <Carrousel>
+      <ContainerList>
+        {width < 1081 ? (
           <Slideshow>
             {listTech.map((item) => (
-              <Slide key={item.id}>
+              <Item key={item.id}>
                 <a href={item.website} target='_blank' rel='noreferrer'>
                   <img src={item.img} alt={item.alt} />
                 </a>
-              </Slide>
+              </Item>
             ))}
           </Slideshow>
-        </Carrousel>
-      ) : (
-        <List>
-          {listTech.map((item) => (
-            <Item key={item.id}>
-              <a href={item.website} target='_blank' rel='noreferrer'>
-                <img src={item.img} alt={item.alt} />
-              </a>
-            </Item>
-          ))}
-        </List>
-      )}
+        ) : (
+          <List>
+            {listTech.map((item) => (
+              <Item key={item.id}>
+                <a href={item.website} target='_blank' rel='noreferrer'>
+                  <img src={item.img} alt={item.alt} />
+                </a>
+              </Item>
+            ))}
+          </List>
+        )}
+      </ContainerList>
     </Container>
   )
 }
