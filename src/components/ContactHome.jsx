@@ -17,10 +17,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  @media screen and (max-width: 1080px) {
-    width: min-content;
-    margin: 0 auto;
-  }
 `
 const List = styled.ul`
   width: 100%;
@@ -80,39 +76,41 @@ function ContactHome() {
     }
   ]
   return (
-    <Container>
-      {width < 1080 ? (
-        <Slideshow>
-          {footerHome.map((item) => (
-            <Slide key={item.id}>
-              <Item>
-                {item.id !== 1 && <Line />}
-                <img src={item.icon} alt={item.alt} />
-                <TitleF>
-                  {item.title}
-                  <SpanT>{item.span}</SpanT>
-                </TitleF>
-              </Item>
-            </Slide>
-          ))}
-        </Slideshow>
-      ) : (
-        <List>
-          {footerHome.map((item) => (
-            <li key={item.id}>
-              <Item>
-                {item.id !== 1 && <Line />}
-                <img src={item.icon} alt={item.alt} />
-                <TitleF>
-                  {item.title}
-                  <SpanT>{item.span}</SpanT>
-                </TitleF>
-              </Item>
-            </li>
-          ))}
-        </List>
-      )}
-    </Container>
+    <>
+      <Container>
+        {width < 1080 ? (
+          <Slideshow>
+            {footerHome.map((item) => (
+              <Slide key={item.id}>
+                <Item>
+                  {item.id !== 1 && <Line />}
+                  <img src={item.icon} alt={item.alt} />
+                  <TitleF>
+                    {item.title}
+                    <SpanT>{item.span}</SpanT>
+                  </TitleF>
+                </Item>
+              </Slide>
+            ))}
+          </Slideshow>
+        ) : (
+          <List>
+            {footerHome.map((item) => (
+              <li key={item.id}>
+                <Item>
+                  {item.id !== 1 && <Line />}
+                  <img src={item.icon} alt={item.alt} />
+                  <TitleF>
+                    {item.title}
+                    <SpanT>{item.span}</SpanT>
+                  </TitleF>
+                </Item>
+              </li>
+            ))}
+          </List>
+        )}
+      </Container>
+    </>
   )
 }
 
