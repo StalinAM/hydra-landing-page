@@ -2,10 +2,13 @@ import simulation from '../assets/simulation.webp'
 import education from '../assets/education.webp'
 import selfCare from '../assets/self-care.webp'
 import outdoor from '../assets/outdoor.webp'
-import { Container } from '../style/Section'
+import { Background, Container } from '../style/Section'
 import HeaderSection from './HeaderSection'
 import Card from './Card'
 import styled from 'styled-components'
+import { Slideshow, Slide } from './SlideShow'
+import useScreenSize from './hooks/ScreenSize'
+import url from '../assets/background-build.svg'
 
 const Content = styled.ul`
   display: flex;
@@ -13,7 +16,11 @@ const Content = styled.ul`
   flex-wrap: wrap;
   justify-content: space-around;
 `
+const ContainerList = styled.div`
+  position: relative;
+`
 function Services() {
+  const { width } = useScreenSize()
   const listServices = [
     {
       id: 1,
@@ -58,24 +65,44 @@ function Services() {
   ]
   return (
     <Container id='services'>
+      <Background url={url} />
       <HeaderSection
         title='WHY BUILD'
         span='WITH HYDRA?'
         paragraph='Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Viverra aliquet eget sit amet tellus. Ornare lectus sit amet est placerat in. Lectus magna fringilla urna porttitor rhoncus vitae.'
       />
-      <Content>
-        {listServices.map((item) => (
-          <Card
-            key={item.id}
-            src={item.image}
-            alt={item.alt}
-            title={item.title}
-            paragraph={item.paragraph}
-            text={item.titleBtn}
-            href={item.href}
-          />
-        ))}
-      </Content>
+      {width < 1081 ? (
+        <ContainerList>
+          <Slideshow>
+            {listServices.map((item) => (
+              <Slide key={item.id}>
+                <Card
+                  src={item.image}
+                  alt={item.alt}
+                  title={item.title}
+                  paragraph={item.paragraph}
+                  text={item.titleBtn}
+                  href={item.href}
+                />
+              </Slide>
+            ))}
+          </Slideshow>
+        </ContainerList>
+      ) : (
+        <Content>
+          {listServices.map((item) => (
+            <Card
+              key={item.id}
+              src={item.image}
+              alt={item.alt}
+              title={item.title}
+              paragraph={item.paragraph}
+              text={item.titleBtn}
+              href={item.href}
+            />
+          ))}
+        </Content>
+      )}
     </Container>
   )
 }
