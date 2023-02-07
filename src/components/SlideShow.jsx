@@ -49,7 +49,6 @@ const Slide = styled.li`
   justify-content: center;
   min-width: 100%;
   z-index: 10;
-  /* max-height: 500px; */
   position: relative;
 `
 const Controles = styled.div`
