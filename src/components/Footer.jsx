@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/symbol-logo.svg'
+import url from '../assets/background-footer.svg'
 import facebook from '../assets/social/facebook.svg'
 import twitter from '../assets/social/twitter.svg'
 import linkedin from '../assets/social/linkedin.svg'
@@ -15,6 +16,10 @@ const Container = styled.footer`
   justify-content: center;
   gap: 4rem;
   padding: 6rem 5rem 4rem;
+  background: url(${(props) => props.url});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   @media screen and (max-width: 1080px) {
     padding: 3rem 1.5rem 4rem;
   }
@@ -31,6 +36,9 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
   }
+`
+const Logo = styled.img`
+  margin: auto 0;
 `
 const Vertical = styled.div`
   border-left: 1px solid ${(props) => props.theme.lightPurple};
@@ -126,9 +134,9 @@ function Footer() {
     { icon: pinterest, href: 'https://www.pinterest.com/' }
   ]
   return (
-    <Container>
+    <Container url={url}>
       <Content>
-        <img src={logo} alt='logo hydra' />
+        <Logo src={logo} alt='logo hydra' />
         <Vertical />
         <List>
           {NAVIGATION_LINKS.map((item) => (

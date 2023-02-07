@@ -1,13 +1,27 @@
 import { Container } from '../style/Section'
+import url from '../assets/background-how-build.svg'
 import HeaderSection from './HeaderSection'
 import arrow from '../assets/arrow.svg'
 import styled from 'styled-components'
-
+import useScreenSize from './hooks/ScreenSize'
+import { Slideshow, Slide } from './SlideShow'
+const Background = styled.div`
+  position: absolute;
+  background: url(${(props) => props.url});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: -1;
+`
 const List = styled.ul`
   display: flex;
   gap: 1rem;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 `
 const Item = styled.li`
   display: flex;
@@ -17,6 +31,7 @@ const Item = styled.li`
   justify-content: center;
 `
 const Circle = styled.div`
+  margin-top: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,6 +62,9 @@ const Text = styled.h3`
   font-size: ${(props) => props.theme.lFont};
   font-weight: bold;
 `
+const ContainerList = styled.div`
+  position: relative;
+`
 function BuildHydra() {
   const stepList = [
     { id: 1, text: '3D Conception & Design' },
@@ -54,6 +72,7 @@ function BuildHydra() {
     { id: 3, text: 'VR World User Testing' },
     { id: 4, text: 'Hydra VR Deploy' }
   ]
+  const { width } = useScreenSize()
   return (
     <Container id='how-to'>
       <HeaderSection
@@ -61,19 +80,40 @@ function BuildHydra() {
         span='WITH HYDRA VR?'
         paragraph='Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Viverra aliquet eget sit amet tellus. Ornare lectus sit amet est placerat in. Lectus magna fringilla urna porttitor rhoncus vitae.'
       />
-      <List>
-        {stepList.map((item) => (
-          <Item key={item.id}>
-            <Circle>
-              <Num>0{item.id}</Num>
-            </Circle>
-            <Title>
-              <Icon src={arrow} alt='' />
-              <Text>{item.text}</Text>
-            </Title>
-          </Item>
-        ))}
-      </List>
+      {width < 1081 ? (
+        <ContainerList>
+          <Slideshow>
+            {stepList.map((item) => (
+              <Slide key={item.id}>
+                <Item>
+                  <Circle>
+                    <Num>0{item.id}</Num>
+                  </Circle>
+                  <Title>
+                    <Icon src={arrow} alt='' />
+                    <Text>{item.text}</Text>
+                  </Title>
+                </Item>
+              </Slide>
+            ))}
+          </Slideshow>
+        </ContainerList>
+      ) : (
+        <List>
+          <Background url={url} />
+          {stepList.map((item) => (
+            <Item key={item.id}>
+              <Circle>
+                <Num>0{item.id}</Num>
+              </Circle>
+              <Title>
+                <Icon src={arrow} alt='' />
+                <Text>{item.text}</Text>
+              </Title>
+            </Item>
+          ))}
+        </List>
+      )}
     </Container>
   )
 }

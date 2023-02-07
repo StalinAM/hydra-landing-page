@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Button from './Button'
 import HeaderSection from './HeaderSection'
 import image from '../assets/about.webp'
-import { Container } from '../style/Section'
+import url from '../assets/background-about.svg'
+import { Container, Background } from '../style/Section'
 import styled from 'styled-components'
 import Wrapper from './Wrapper'
 import { coordTransform, restoreTransform } from './Item3D'
@@ -53,6 +54,7 @@ function About() {
 
   return (
     <Container id='about'>
+      <Background url={url} />
       <HeaderSection
         title='INTRODUCTION'
         span='TO HYDRA VR'

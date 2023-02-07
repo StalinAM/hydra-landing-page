@@ -7,7 +7,20 @@ import Wrapper from './Wrapper'
 import { coordTransform, restoreTransform } from './Item3D'
 import { useState } from 'react'
 import ContactHome from './ContactHome'
+import url from '../assets/background-home.svg'
 
+const Background = styled.div`
+  position: absolute;
+  background: url(${(props) => props.url});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+`
 const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
   box-shadow: ${(props) => props.theme.box};
@@ -45,6 +58,7 @@ function Home() {
 
   return (
     <Container id='home'>
+      <Background url={url} />
       <Content>
         <Left>
           <Title>Dive Into The Depths of Virtual Reality</Title>
