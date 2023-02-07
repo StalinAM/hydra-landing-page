@@ -1,5 +1,7 @@
 import React from 'react'
+import useScreenSize from './hooks/ScreenSize'
 import { Container } from '../style/Section'
+import { Slideshow, Slide } from './SlideShow'
 import unreal from '../assets/unreal.svg'
 import unity from '../assets/unity.svg'
 import oculus from '../assets/oculus.svg'
@@ -59,7 +61,14 @@ const Item = styled.li`
     transform: scale(1.2);
   }
 `
+const ContainerSlide = styled.div`
+  width: min-content;
+  position: relative;
+  margin: 0 auto;
+`
 function Technologies() {
+  const { width } = useScreenSize()
+
   const listTech = [
     {
       id: 1,
@@ -97,15 +106,29 @@ function Technologies() {
           <Arrow src={arrow} alt='' />
         </Btn>
       </Banner>
-      <List>
-        {listTech.map((item) => (
-          <Item key={item.id}>
-            <a href={item.website} target='_blank' rel='noreferrer'>
-              <img src={item.img} alt={item.alt} />
-            </a>
-          </Item>
-        ))}
-      </List>
+      {width < 1081 ? (
+        <ContainerSlide>
+          <Slideshow>
+            {listTech.map((item) => (
+              <Slide key={item.id}>
+                <a href={item.website} target='_blank' rel='noreferrer'>
+                  <img src={item.img} alt={item.alt} />
+                </a>
+              </Slide>
+            ))}
+          </Slideshow>
+        </ContainerSlide>
+      ) : (
+        <List>
+          {listTech.map((item) => (
+            <Item key={item.id}>
+              <a href={item.website} target='_blank' rel='noreferrer'>
+                <img src={item.img} alt={item.alt} />
+              </a>
+            </Item>
+          ))}
+        </List>
+      )}
     </Container>
   )
 }
