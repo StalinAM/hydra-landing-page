@@ -3,7 +3,7 @@ import Button from './Button'
 import Wrapper from './Wrapper'
 import { coordTransform, restoreTransform } from './Item3D'
 import { useState } from 'react'
-const Container = styled.li`
+const Container = styled.div`
   transform-style: preserve-3d;
   width: 330px;
   display: flex;
