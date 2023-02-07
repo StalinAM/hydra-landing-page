@@ -4,7 +4,7 @@ import location from '../assets/icons/location.svg'
 import phone from '../assets/icons/phone.svg'
 import email from '../assets/icons/email.svg'
 import useScreenSize from './hooks/ScreenSize'
-import { Slideshow, Slide } from './SlideShow'
+import { Slideshow } from './SlideShow'
 const Container = styled.div`
   display: flex;
   padding: 2rem;
@@ -16,7 +16,18 @@ const Container = styled.div`
   border-radius: 90px;
   align-items: center;
   justify-content: center;
-  position: relative;
+  @media screen and (max-width: 1080px) {
+    position: relative;
+    width: min-content;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 480px) {
+    position: relative;
+    width: auto;
+    margin: 0;
+    border-radius: 55px;
+    padding: 1rem 1.2rem;
+  }
 `
 const List = styled.ul`
   width: 100%;
@@ -25,11 +36,14 @@ const List = styled.ul`
   align-items: center;
   gap: 1rem;
 `
-const Item = styled.div`
+const Item = styled.li`
   display: flex;
   align-items: center;
   gap: 1.8rem;
   @media screen and (max-width: 1080px) {
+    min-width: 100%;
+    z-index: 10;
+    position: relative;
     justify-content: center;
   }
 `
@@ -76,41 +90,35 @@ function ContactHome() {
     }
   ]
   return (
-    <>
-      <Container>
-        {width < 1080 ? (
-          <Slideshow>
-            {footerHome.map((item) => (
-              <Slide key={item.id}>
-                <Item>
-                  {item.id !== 1 && <Line />}
-                  <img src={item.icon} alt={item.alt} />
-                  <TitleF>
-                    {item.title}
-                    <SpanT>{item.span}</SpanT>
-                  </TitleF>
-                </Item>
-              </Slide>
-            ))}
-          </Slideshow>
-        ) : (
-          <List>
-            {footerHome.map((item) => (
-              <li key={item.id}>
-                <Item>
-                  {item.id !== 1 && <Line />}
-                  <img src={item.icon} alt={item.alt} />
-                  <TitleF>
-                    {item.title}
-                    <SpanT>{item.span}</SpanT>
-                  </TitleF>
-                </Item>
-              </li>
-            ))}
-          </List>
-        )}
-      </Container>
-    </>
+    <Container>
+      {width < 1080 ? (
+        <Slideshow>
+          {footerHome.map((item) => (
+            <Item key={item.id}>
+              {item.id !== 1 && <Line />}
+              <img src={item.icon} alt={item.alt} />
+              <TitleF>
+                {item.title}
+                <SpanT>{item.span}</SpanT>
+              </TitleF>
+            </Item>
+          ))}
+        </Slideshow>
+      ) : (
+        <List>
+          {footerHome.map((item) => (
+            <Item key={item.id}>
+              {item.id !== 1 && <Line />}
+              <img src={item.icon} alt={item.alt} />
+              <TitleF>
+                {item.title}
+                <SpanT>{item.span}</SpanT>
+              </TitleF>
+            </Item>
+          ))}
+        </List>
+      )}
+    </Container>
   )
 }
 
