@@ -1,7 +1,4 @@
 import Button from './Button'
-import location from '../assets/icons/location.svg'
-import phone from '../assets/icons/phone.svg'
-import email from '../assets/icons/email.svg'
 import arrow from '../assets/arrow.svg'
 import imageHome from '../assets/home.webp'
 import styled from 'styled-components'
@@ -9,7 +6,7 @@ import { Container } from '../style/Section'
 import Wrapper from './Wrapper'
 import { coordTransform, restoreTransform } from './Item3D'
 import { useState } from 'react'
-import { Slideshow, Slide } from './SlideShow'
+import ContactHome from './ContactHome'
 
 const Image = styled.img`
   border-radius: 100px 100px 100px 240px;
@@ -42,74 +39,8 @@ const ContainerBtn = styled.div`
   align-items: center;
   gap: 1rem;
 `
-const Contact = styled.div`
-  display: flex;
-  padding: 2rem;
-  background: radial-gradient(
-    circle,
-    rgba(64, 58, 95, 1) 13%,
-    rgba(33, 30, 46, 1) 70%
-  );
-  border-radius: 90px;
-  align-items: center;
-  justify-content: space-around;
-  gap: 1rem;
-  position: relative;
-  @media screen and (max-width: 1080px) {
-    width: min-content;
-    margin: 0 auto;
-  }
-`
-const Item = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.8rem;
-  @media screen and (max-width: 1080px) {
-    justify-content: center;
-  }
-`
-const Line = styled.div`
-  border-left: 1px solid ${(props) => props.theme.lightPurple};
-  height: 57px;
-  @media screen and (max-width: 1080px) {
-    display: none;
-  }
-`
-const TitleF = styled.p`
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: ${(props) => props.theme.lFont};
-`
-const SpanT = styled.span`
-  font-weight: normal;
-  font-size: ${(props) => props.theme.sFont};
-`
 
 function Home() {
-  const footerHome = [
-    {
-      id: 1,
-      icon: location,
-      title: 'Pay Us a Visit',
-      span: 'Union St, Seattle, WA 98101, United States',
-      alt: 'location symbol on a map'
-    },
-    {
-      id: 2,
-      icon: phone,
-      title: 'Give Us a Call',
-      span: '(110) 1111-1010',
-      alt: 'telephone symbol'
-    },
-    {
-      id: 3,
-      icon: email,
-      title: 'Send Us a Message',
-      span: 'Contact@HydraVTech.com',
-      alt: 'email symbol'
-    }
-  ]
   const [coordTransformS, setCoordTransformS] = useState()
 
   return (
@@ -139,22 +70,7 @@ function Home() {
           />
         </Wrapper>
       </Content>
-      <Contact>
-        <Slideshow>
-          {footerHome.map((item) => (
-            <Slide key={item.id}>
-              <Item>
-                {item.id !== 1 && <Line />}
-                <img src={item.icon} alt={item.alt} />
-                <TitleF>
-                  {item.title}
-                  <SpanT>{item.span}</SpanT>
-                </TitleF>
-              </Item>
-            </Slide>
-          ))}
-        </Slideshow>
-      </Contact>
+      <ContactHome />
     </Container>
   )
 }
