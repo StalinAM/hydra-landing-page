@@ -17,15 +17,36 @@ const Banner = styled.div`
   padding: 6rem;
   border-radius: 160px;
   position: relative;
+  @media screen and (max-width: 1080px) {
+    padding: 4rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 3rem;
+    border-radius: 60px;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `
 const Title = styled.h2`
+  display: flex;
+  flex-direction: column;
   font-size: ${(props) => props.theme.xlFont};
   font-weight: bold;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.lFont};
+  }
 `
 const Span = styled.span`
   font-size: ${(props) => props.theme.xlFont};
   font-weight: 300;
+  @media screen and (max-width: 768px) {
+    font-size: ${(props) => props.theme.xlFont};
+  }
+  @media screen and (max-width: 480px) {
+    font-size: ${(props) => props.theme.lFont};
+  }
 `
 const Btn = styled.button`
   display: flex;
@@ -44,16 +65,24 @@ const Btn = styled.button`
     ${(props) => props.theme.mLightPurple},
     ${(props) => props.theme.lightPurple}
   );
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    transform: translate(-50%, 17.5px);
+  }
+  @media screen and (max-width: 480px) {
+  }
 `
 const Arrow = styled.img`
   width: 50px;
   transform: rotate(90deg);
 `
 const List = styled.ul`
+  width: 100%;
   display: flex;
-  gap: 2rem;
-  align-items: center;
   justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
 `
 const Item = styled.li`
   transition: all ease-in-out 0.4s;
@@ -61,10 +90,8 @@ const Item = styled.li`
     transform: scale(1.2);
   }
 `
-const ContainerSlide = styled.div`
-  width: min-content;
+const Carrousel = styled.div`
   position: relative;
-  margin: 0 auto;
 `
 function Technologies() {
   const { width } = useScreenSize()
@@ -107,7 +134,7 @@ function Technologies() {
         </Btn>
       </Banner>
       {width < 1081 ? (
-        <ContainerSlide>
+        <Carrousel>
           <Slideshow>
             {listTech.map((item) => (
               <Slide key={item.id}>
@@ -117,7 +144,7 @@ function Technologies() {
               </Slide>
             ))}
           </Slideshow>
-        </ContainerSlide>
+        </Carrousel>
       ) : (
         <List>
           {listTech.map((item) => (
