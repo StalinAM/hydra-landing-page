@@ -41,7 +41,6 @@ const GlobalStyles = createGlobalStyle`
     img{
         max-width: 100%;
         height: auto;
-        width: auto/9;
     }
     h1,h2,h3,h4,h5,h6{
         margin: 0;
