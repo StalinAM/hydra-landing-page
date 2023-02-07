@@ -44,6 +44,9 @@ const ContenedorSlideshow = styled.ul`
 `
 
 const Slide = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 100%;
   z-index: 10;
   /* max-height: 500px; */
@@ -53,7 +56,6 @@ const Controles = styled.div`
   position: absolute;
   z-index: 20;
   width: 100%;
-
   pointer-events: none;
   top: 50%;
   transform: translateY(-15px);
