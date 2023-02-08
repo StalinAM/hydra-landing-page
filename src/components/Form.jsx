@@ -66,7 +66,7 @@ const Btn = styled.button`
 `
 function Form() {
   return (
-    <Container onSubmit=''>
+    <Container onSubmit={() => {}}>
       <Title>Let’s Build Your VR Experience</Title>
       <Separator>
         <Input type='text' name='name' placeholder='First name' required />
