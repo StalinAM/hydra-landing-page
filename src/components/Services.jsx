@@ -6,18 +6,40 @@ import { Background, Container } from '../style/Section'
 import HeaderSection from './HeaderSection'
 import Card from './Card'
 import styled from 'styled-components'
-import { Slideshow, Slide } from './SlideShow'
+import { Slideshow } from './SlideShow'
 import useScreenSize from './hooks/ScreenSize'
 import url from '../assets/background-build.svg'
 
-const Content = styled.ul`
+const List = styled.ul`
   display: flex;
-  gap: 1.1rem;
+  gap: 3rem 1.5rem;
   flex-wrap: wrap;
   justify-content: space-around;
 `
 const ContainerList = styled.div`
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 1080px) {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 480px) {
+    max-width: 320px;
+  }
+`
+const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 1080px) {
+    min-width: 100%;
+    z-index: 10;
+    position: relative;
+  }
 `
 function Services() {
   const { width } = useScreenSize()
@@ -71,11 +93,11 @@ function Services() {
         span='WITH HYDRA?'
         paragraph='Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Viverra aliquet eget sit amet tellus. Ornare lectus sit amet est placerat in. Lectus magna fringilla urna porttitor rhoncus vitae.'
       />
-      {width < 1081 ? (
-        <ContainerList>
+      <ContainerList>
+        {width < 1081 ? (
           <Slideshow>
             {listServices.map((item) => (
-              <Slide key={item.id}>
+              <Item key={item.id}>
                 <Card
                   src={item.image}
                   alt={item.alt}
@@ -84,25 +106,26 @@ function Services() {
                   text={item.titleBtn}
                   href={item.href}
                 />
-              </Slide>
+              </Item>
             ))}
           </Slideshow>
-        </ContainerList>
-      ) : (
-        <Content>
-          {listServices.map((item) => (
-            <Card
-              key={item.id}
-              src={item.image}
-              alt={item.alt}
-              title={item.title}
-              paragraph={item.paragraph}
-              text={item.titleBtn}
-              href={item.href}
-            />
-          ))}
-        </Content>
-      )}
+        ) : (
+          <List>
+            {listServices.map((item) => (
+              <Item key={item.id}>
+                <Card
+                  src={item.image}
+                  alt={item.alt}
+                  title={item.title}
+                  paragraph={item.paragraph}
+                  text={item.titleBtn}
+                  href={item.href}
+                />
+              </Item>
+            ))}
+          </List>
+        )}
+      </ContainerList>
     </Container>
   )
 }
