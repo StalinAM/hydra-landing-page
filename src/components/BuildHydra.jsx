@@ -49,6 +49,11 @@ const Circle = styled.div`
     ${(props) => props.theme.mLightPurple},
     ${(props) => props.theme.lightPurple}
   );
+  @media screen and (max-width: 768px) {
+    width: 130px;
+    height: 130px;
+    box-shadow: ${(props) => props.theme.mBox};
+  }
 `
 const Num = styled.span`
   font-size: ${(props) => props.theme.numSize};
