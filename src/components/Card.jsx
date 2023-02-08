@@ -17,12 +17,22 @@ const Container = styled.div`
     rgba(33, 30, 46, 1) 70%
   );
   border-radius: 40px;
+  @media screen and (max-width: 1080px) {
+    margin: 3rem 0;
+  }
+  @media screen and (max-width: 480px) {
+    width: 280px;
+  }
 `
 const Image = styled.img`
   border-radius: 50%;
   box-shadow: ${(props) => props.theme.box};
   transform: translateZ(60px);
   transition: all 0.3s ease-out;
+  @media screen and (max-width: 480px) {
+    width: 50%;
+    transform: translateZ(50px);
+  }
 `
 const Title = styled.h3`
   font-size: ${(props) => props.theme.lFont};
