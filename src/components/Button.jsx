@@ -18,8 +18,12 @@ const Btn = styled.a`
     box-shadow: inset 0 0 0 3px ${(props) => props.theme.white};
   }
 `
-function Button({ href, text }) {
-  return <Btn href={href}>{text.toUpperCase()}</Btn>
+function Button({ href, text, setToggle }) {
+  return (
+    <Btn onClick={() => setToggle(false)} href={href}>
+      {text.toUpperCase()}
+    </Btn>
+  )
 }
 
 export default Button
