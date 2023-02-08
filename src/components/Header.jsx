@@ -23,17 +23,20 @@ const MenuC = styled.div`
   justify-content: space-between;
   gap: 2rem;
   @media screen and (max-width: 1080px) {
-    display: ${(props) => (props.show ? 'flex' : 'none')};
+    transform: ${(props) =>
+      props.show ? 'translateX(0)' : 'translateX(100%)'};
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     background-color: ${(props) => props.theme.darkPurple};
+    backdrop-filter: blur(2px);
     flex-direction: column;
     width: min(75vw, 400px);
     height: 100vh;
     justify-content: center;
     z-index: 300;
+    transition: transform 0.5s ease-in-out;
   }
 `
 const Menu = styled.ul`
@@ -112,15 +115,15 @@ function Header({ toggle, setToggle }) {
         <MenuC show={toggle}>
           <Menu>
             {NAVIGATION_LINKS.map((item) => (
-              <Item key={item.href}>
+              <Item key={item.href} onClick={() => setToggle(!toggle)}>
                 <a href={item.href}>{item.title.toUpperCase()}</a>
               </Item>
             ))}
             <Close src={close} onClick={() => setToggle(!toggle)} />
           </Menu>
           <ButtonC>
-            <Button href='#contact' text='contact us' />
-            <Button href='#' text='join hydra' />
+            <Button setToggle={setToggle} href='#contact' text='contact us' />
+            <Button setToggle={setToggle} href='#' text='join hydra' />
           </ButtonC>
         </MenuC>
         <Open onClick={() => setToggle(!toggle)} src={open} />
