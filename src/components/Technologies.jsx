@@ -78,23 +78,22 @@ const Arrow = styled.img`
   transform: rotate(90deg);
 `
 const List = styled.ul`
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: space-around;
   align-items: center;
   position: relative;
 `
 const Item = styled.li`
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
   align-items: center;
+  transition: all ease-in-out 0.4s;
   justify-content: center;
+  &:hover {
+    transform: scale(1.2);
+  }
   @media screen and (max-width: 1080px) {
-    transition: all ease-in-out 0.4s;
-    &:hover {
-      transform: scale(1.2);
-    }
     min-width: 100%;
     z-index: 10;
     position: relative;
@@ -103,15 +102,11 @@ const Item = styled.li`
 const ContainerList = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   @media screen and (max-width: 1080px) {
     position: relative;
-    width: auto;
+    max-width: 340px;
     margin: 0 auto;
-  }
-  @media screen and (max-width: 768px) {
-    width: auto;
-    margin: 0;
   }
 `
 function Technologies() {
