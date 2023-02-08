@@ -42,15 +42,6 @@ const ContenedorSlideshow = styled.ul`
   flex-wrap: nowrap;
   overflow: hidden;
 `
-
-const Slide = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 100%;
-  z-index: 10;
-  position: relative;
-`
 const Controles = styled.div`
   position: absolute;
   z-index: 20;
@@ -86,4 +77,4 @@ const Boton = styled.button`
   pointer-events: all;
 `
 
-export { Slideshow, Slide }
+export { Slideshow }
