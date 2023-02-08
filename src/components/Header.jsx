@@ -89,9 +89,13 @@ const Close = styled.img`
   cursor: pointer;
   @media screen and (max-width: 1080px) {
     display: block;
-    top: 95px;
+    top: 87px;
     right: 40px;
     position: absolute;
+  }
+  @media screen and (max-width: 480px) {
+    top: 71px;
+    right: 16px;
   }
 `
 function Header({ toggle, setToggle }) {
