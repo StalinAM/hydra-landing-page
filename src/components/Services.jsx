@@ -12,7 +12,7 @@ import url from '../assets/background-build.svg'
 
 const List = styled.ul`
   display: flex;
-  gap: 3rem 1.5rem;
+  gap: 3rem 2rem;
   flex-wrap: wrap;
   justify-content: space-around;
 `
