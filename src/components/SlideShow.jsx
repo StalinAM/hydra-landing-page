@@ -1,11 +1,14 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 import arrow from '../assets/small-arrow.svg'
 import styled from 'styled-components'
 
 const Slideshow = ({ children, controles = true }) => {
   const slideshow = useRef(null)
 
-  const siguiente = useCallback(() => {})
+  const siguiente = useCallback(() => {
+    const primerElemento = slideshow.current.children[0]
+    slideshow.current.appendChild(primerElemento)
+  })
 
   const anterior = () => {
     if (slideshow.current.children.length > 0) {
@@ -24,11 +27,11 @@ const Slideshow = ({ children, controles = true }) => {
       <ContenedorSlideshow ref={slideshow}>{children}</ContenedorSlideshow>
       {controles && (
         <Controles>
-          <Boton onClick={anterior}>
-            <ArrowLeft src={arrow} alt='' />
-          </Boton>
           <Boton derecho onClick={siguiente}>
             <ArrowRight src={arrow} alt='' />
+          </Boton>
+          <Boton onClick={anterior}>
+            <ArrowLeft src={arrow} alt='' />
           </Boton>
         </Controles>
       )}
@@ -52,11 +55,11 @@ const Controles = styled.div`
 `
 const ArrowLeft = styled.img`
   width: 25px;
+  transform: rotate(180deg);
 `
 const ArrowRight = styled.img`
   width: 25px;
   right: 0;
-  transform: rotate(180deg);
 `
 const Boton = styled.button`
   position: absolute;
@@ -73,7 +76,7 @@ const Boton = styled.button`
     ${(props) => props.theme.mLightPurple},
     ${(props) => props.theme.lightPurple}
   );
-  ${(props) => (props.derecho ? 'left: -15px' : 'right: -15px')};
+  ${(props) => (props.derecho ? 'right: -15px' : 'left: -15px')};
   pointer-events: all;
 `
 
