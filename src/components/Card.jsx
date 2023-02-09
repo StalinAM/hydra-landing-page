@@ -1,8 +1,7 @@
+import Atropos from 'atropos/react'
+import 'atropos/css'
 import styled from 'styled-components'
 import Button from './Button'
-import Wrapper from './Wrapper'
-import { coordTransform, restoreTransform } from './Item3D'
-import { useState } from 'react'
 const Container = styled.div`
   transform-style: preserve-3d;
   width: 330px;
@@ -49,21 +48,16 @@ const Description = styled.p`
   font-weight: normal;
 `
 function Card({ src, alt, title, paragraph, text, href }) {
-  const [coordTransformS, setCoordTransformS] = useState()
   return (
-    <Wrapper
-      coordTransform={coordTransform}
-      restoreTransform={restoreTransform}
-      setCoordTransformS={setCoordTransformS}
-    >
-      <Container style={coordTransformS}>
-        <Image src={src} alt={alt} />
-        <Title>{title.toUpperCase()}</Title>
+    <Atropos activeOffset={20} shadow={false} highlight={false}>
+      <Container>
+        <Image data-atropos-offset='-4' src={src} alt={alt} />
+        <Title data-atropos-offset='10'>{title.toUpperCase()}</Title>
         <Line length={title.length} />
-        <Description>{paragraph}</Description>
-        <Button text={text} href={href} />
+        <Description data-atropos-offset='3'>{paragraph}</Description>
+        <Button data-atropos-offset='-4' text={text} href={href} />
       </Container>
-    </Wrapper>
+    </Atropos>
   )
 }
 

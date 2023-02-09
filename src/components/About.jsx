@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import Atropos from 'atropos/react'
+import 'atropos/css'
 import Button from './Button'
 import HeaderSection from './HeaderSection'
 import image from '../assets/about.webp'
 import url from '../assets/background-about.svg'
 import { Container, Background } from '../style/Section'
 import styled from 'styled-components'
-import Wrapper from './Wrapper'
-import { coordTransform, restoreTransform } from './Item3D'
 
 const Content = styled.article`
   display: flex;
@@ -15,12 +14,12 @@ const Content = styled.article`
   align-items: center;
   flex-wrap: wrap;
 `
-const Image = styled.img`
-  box-shadow: ${(props) => props.theme.box};
+const ContainerImg = styled.div`
   border-radius: 100px 240px;
-  transform-style: preserve-3d;
+  border: 20px solid rgba(0, 0, 0, 0.25);
+  overflow: hidden;
   @media screen and (max-width: 480px) {
-    box-shadow: ${(props) => props.theme.mBox};
+    border: 10px solid rgba(0, 0, 0, 0.25);
     border-radius: 50px 120px;
   }
 `
@@ -50,8 +49,6 @@ const Description = styled.p`
   max-width: 65ch;
 `
 function About() {
-  const [coordTransformS, setCoordTransformS] = useState()
-
   return (
     <Container id='about'>
       <Background url={url} />
@@ -61,17 +58,11 @@ function About() {
         paragraph='Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Viverra aliquet eget sit amet tellus. Ornare lectus sit amet est placerat in. Lectus magna fringilla urna porttitor rhoncus vitae.'
       />
       <Content>
-        <Wrapper
-          coordTransform={coordTransform}
-          restoreTransform={restoreTransform}
-          setCoordTransformS={setCoordTransformS}
-        >
-          <Image
-            style={coordTransformS}
-            src={image}
-            alt='boy using virtual reality glasses'
-          />
-        </Wrapper>
+        <Atropos activeOffset={20} shadow={false} highlight={false}>
+          <ContainerImg>
+            <img src={image} alt='boy using virtual reality glasses' />
+          </ContainerImg>
+        </Atropos>
         <Right>
           <SubTitle>
             ABOUT <Span>HYDRA VR</Span>

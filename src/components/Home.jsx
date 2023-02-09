@@ -1,13 +1,12 @@
-import Button from './Button'
-import arrow from '../assets/arrow.svg'
-import imageHome from '../assets/home.webp'
+import Atropos from 'atropos/react'
+import 'atropos/css'
 import styled from 'styled-components'
-import { Container } from '../style/Section'
-import Wrapper from './Wrapper'
-import { coordTransform, restoreTransform } from './Item3D'
-import { useState } from 'react'
+import Button from './Button'
 import ContactHome from './ContactHome'
+import { Container } from '../style/Section'
+import imageHome from '../assets/home.webp'
 import url from '../assets/background-home.svg'
+import arrow from '../assets/arrow.svg'
 
 const Background = styled.div`
   position: absolute;
@@ -21,12 +20,12 @@ const Background = styled.div`
   top: 0;
   z-index: -1;
 `
-const Image = styled.img`
+const ContainerImg = styled.div`
   border-radius: 100px 100px 100px 240px;
-  box-shadow: ${(props) => props.theme.box};
-  transform-style: preserve-3d;
+  border: 20px solid rgba(0, 0, 0, 0.25);
+  overflow: hidden;
   @media screen and (max-width: 480px) {
-    box-shadow: ${(props) => props.theme.mBox};
+    border: 10px solid rgba(0, 0, 0, 0.25);
   }
 `
 const Title = styled.h1`
@@ -54,8 +53,6 @@ const ContainerBtn = styled.div`
 `
 
 function Home() {
-  const [coordTransformS, setCoordTransformS] = useState()
-
   return (
     <Container id='home'>
       <Background url={url} />
@@ -72,17 +69,11 @@ function Home() {
             <img src={arrow} />
           </ContainerBtn>
         </Left>
-        <Wrapper
-          coordTransform={coordTransform}
-          restoreTransform={restoreTransform}
-          setCoordTransformS={setCoordTransformS}
-        >
-          <Image
-            style={coordTransformS}
-            src={imageHome}
-            alt='girl using virtual reality glasses'
-          />
-        </Wrapper>
+        <Atropos activeOffset={20} shadow={false} highlight={false}>
+          <ContainerImg>
+            <img src={imageHome} alt='girl using virtual reality glasses' />
+          </ContainerImg>
+        </Atropos>
       </Content>
       <ContactHome />
     </Container>
