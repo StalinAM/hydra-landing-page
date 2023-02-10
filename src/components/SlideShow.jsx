@@ -44,6 +44,7 @@ const ContenedorSlideshow = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
+  max-width: min-content;
 `
 const Controles = styled.div`
   position: absolute;
