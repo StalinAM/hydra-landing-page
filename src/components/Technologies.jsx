@@ -79,12 +79,11 @@ const Arrow = styled.img`
   transform: rotate(90deg);
 `
 const List = styled.ul`
-  width: 100%;
   display: flex;
-  gap: 1.5rem;
   justify-content: space-around;
   align-items: center;
-  position: relative;
+  gap: 1rem;
+  width: -webkit-fill-available;
 `
 const Item = styled.li`
   display: flex;
@@ -93,6 +92,9 @@ const Item = styled.li`
   justify-content: center;
   &:hover {
     transform: scale(1.2);
+  }
+  a {
+    width: max-content;
   }
   @media screen and (max-width: 1080px) {
     min-width: 100%;
