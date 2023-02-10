@@ -8,7 +8,6 @@ import oculus from '../assets/oculus.webp'
 import vive from '../assets/vive.webp'
 import styled from 'styled-components'
 import tech from '../assets/background-technologies.webp'
-import arrow from '../assets/small-arrow.svg'
 
 const Banner = styled.div`
   background-image: url(${tech});
@@ -49,35 +48,6 @@ const Span = styled.span`
     font-size: ${(props) => props.theme.lFont};
   }
 `
-const Btn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 35px);
-  box-shadow: ${(props) => props.theme.mBox};
-  background: linear-gradient(
-    90deg,
-    ${(props) => props.theme.mLightPurple},
-    ${(props) => props.theme.lightPurple}
-  );
-  @media screen and (max-width: 768px) {
-    width: 35px;
-    height: 35px;
-    transform: translate(-50%, 17.5px);
-  }
-  @media screen and (max-width: 480px) {
-  }
-`
-const Arrow = styled.img`
-  width: 50px;
-  transform: rotate(90deg);
-`
 const List = styled.ul`
   display: flex;
   justify-content: space-around;
@@ -95,6 +65,7 @@ const Item = styled.li`
   }
   a {
     width: max-content;
+    padding: 1rem 0;
   }
   @media screen and (max-width: 1080px) {
     min-width: 100%;
@@ -110,6 +81,7 @@ const ContainerList = styled.div`
   @media screen and (max-width: 1080px) {
     position: relative;
     margin: 0 auto;
+    width: 27rem;
   }
 `
 function Technologies() {
@@ -148,9 +120,6 @@ function Technologies() {
           TECHNOLOGIES & HARDWARE
           <Span>USED BY HYDRA VR.</Span>
         </Title>
-        <Btn>
-          <Arrow src={arrow} alt='' />
-        </Btn>
       </Banner>
       <ContainerList>
         {width < 1081 ? (
