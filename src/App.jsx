@@ -6,6 +6,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Home from './components/Home'
+import ScrollUp from './components/ScrollUp'
 import Services from './components/Services'
 import Technologies from './components/Technologies'
 import GlobalStyles from './style/GlobalStyles'
@@ -15,7 +16,7 @@ function App() {
   const [toggle, setToggle] = useState(false)
   return (
     <>
-      <GlobalStyles />
+      <GlobalStyles toggle={toggle} />
       <ThemeProvider theme={darck}>
         <Header toggle={toggle} setToggle={setToggle} />
         <main>
@@ -27,6 +28,7 @@ function App() {
           <Contact />
         </main>
         <Footer />
+        <ScrollUp />
       </ThemeProvider>
     </>
   )
