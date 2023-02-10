@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         font-family: 'Montserrat', sans-serif;
         background-color: #302C42;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1080px) {
             overflow-y: ${(props) => (props.toggle ? 'hidden' : '')};
         }
     }
@@ -27,6 +27,12 @@ const GlobalStyles = createGlobalStyle`
         }
         @media screen and (max-width: 1080px) {
             padding: 0 1.5rem;
+            filter: ${(props) =>
+              props.toggle ? 'blur(5px) brightness(0.7)' : 'none'};
+            pointer-events: ${(props) => (props.show ? 'none' : '')};
+            user-select: ${(props) => (props.show ? 'none' : '')};
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
         @media screen and (max-width: 480px) {
             padding: 0 1rem;
