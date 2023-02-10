@@ -17,9 +17,10 @@ const Background = styled.div`
   z-index: -1;
 `
 const List = styled.ul`
+  width: 100%;
   display: flex;
-  gap: 1rem;
-  justify-content: space-around;
+  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
   position: relative;
 `
