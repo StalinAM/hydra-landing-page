@@ -36,6 +36,9 @@ const Image = styled.img`
 const Title = styled.h3`
   font-size: ${(props) => props.theme.lFont};
   font-weight: bold;
+  background-color: #302c42;
+  padding: 0.2rem 1.2rem;
+  border-radius: 40px;
 `
 const Line = styled.hr`
   width: 11ch;
@@ -52,7 +55,7 @@ function Card({ src, alt, title, paragraph, text, href }) {
     <Atropos activeOffset={50} shadow={false} highlight={false}>
       <Container>
         <Image data-atropos-offset='-4' src={src} alt={alt} />
-        <Title data-atropos-offset='15'>{title.toUpperCase()}</Title>
+        <Title data-atropos-offset='9'>{title.toUpperCase()}</Title>
         <Line length={title.length} />
         <Description data-atropos-offset='3'>{paragraph}</Description>
         <Button data-atropos-offset='-4' text={text} href={href} />
