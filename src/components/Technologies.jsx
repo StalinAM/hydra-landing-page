@@ -2,10 +2,10 @@ import React from 'react'
 import useScreenSize from './hooks/ScreenSize'
 import { Container } from '../style/Section'
 import { Slideshow } from './SlideShow'
-import unreal from '../assets/unreal.svg'
-import unity from '../assets/unity.svg'
-import oculus from '../assets/oculus.svg'
-import vive from '../assets/vive.svg'
+import unreal from '../assets/unreal.webp'
+import unity from '../assets/unity.webp'
+import oculus from '../assets/oculus.webp'
+import vive from '../assets/vive.webp'
 import styled from 'styled-components'
 import tech from '../assets/background-technologies.webp'
 import arrow from '../assets/small-arrow.svg'
@@ -17,6 +17,7 @@ const Banner = styled.div`
   padding: 6rem;
   border-radius: 160px;
   position: relative;
+
   @media screen and (max-width: 1080px) {
     padding: 4rem;
   }
@@ -103,9 +104,9 @@ const ContainerList = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  max-width: -webkit-fill-available;
   @media screen and (max-width: 1080px) {
     position: relative;
-    max-width: 340px;
     margin: 0 auto;
   }
 `
