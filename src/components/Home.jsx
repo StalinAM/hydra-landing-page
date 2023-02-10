@@ -30,6 +30,9 @@ const ContainerImg = styled.div`
 `
 const Title = styled.h1`
   font-size: ${(props) => props.theme.xxlFont};
+  span {
+    color: ${(props) => props.theme.mLightPurple};
+  }
 `
 const Description = styled.p`
   font-size: ${(props) => props.theme.mFont};
@@ -58,7 +61,9 @@ function Home() {
       <Background url={url} />
       <Content>
         <Left>
-          <Title>Dive Into The Depths of Virtual Reality</Title>
+          <Title>
+            <span>Dive</span> Into The Depths of <span>Virtual Reality</span>
+          </Title>
           <Description>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore nisl tincidunt eget.
