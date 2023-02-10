@@ -49,10 +49,10 @@ const Description = styled.p`
 `
 function Card({ src, alt, title, paragraph, text, href }) {
   return (
-    <Atropos activeOffset={20} shadow={false} highlight={false}>
+    <Atropos activeOffset={50} shadow={false} highlight={false}>
       <Container>
         <Image data-atropos-offset='-4' src={src} alt={alt} />
-        <Title data-atropos-offset='10'>{title.toUpperCase()}</Title>
+        <Title data-atropos-offset='15'>{title.toUpperCase()}</Title>
         <Line length={title.length} />
         <Description data-atropos-offset='3'>{paragraph}</Description>
         <Button data-atropos-offset='-4' text={text} href={href} />
