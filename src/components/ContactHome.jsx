@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import useScreenSize from './hooks/ScreenSize'
 import { Slideshow } from './SlideShow'
