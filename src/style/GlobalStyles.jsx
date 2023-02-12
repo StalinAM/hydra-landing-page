@@ -71,5 +71,16 @@ const GlobalStyles = createGlobalStyle`
         border: none;
         outline: none;
     }
+/* Scrollbar */
+    body::-webkit-scrollbar {
+        width: 5px;               /* width of the entire scrollbar */
+    }
+    body::-webkit-scrollbar-track {
+        background: none;        /* color of the tracking area */
+    }
+    body::-webkit-scrollbar-thumb {
+        background-color: #8176AF;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+    }
 `
 export default GlobalStyles
